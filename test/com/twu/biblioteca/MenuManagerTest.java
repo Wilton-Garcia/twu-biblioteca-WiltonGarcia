@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MenuManagerTest {
     @Test
-    public void optionShoulBeInValidWhenOptionsExists(){
+    public void optionShoulBeValidWhenOptionsExists(){
         MenuManager menu = new MenuManager();
         assertEquals(menu.isAValidOption("1"),true);
     }
