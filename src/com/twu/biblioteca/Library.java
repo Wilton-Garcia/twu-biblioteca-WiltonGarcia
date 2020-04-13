@@ -13,10 +13,11 @@ public class Library {
         AvaliableBooks = avaliableBooks;
     }
 
-    public String ShowBooksNames(){
+    public String PrintBooksNames(){
         String result  = "";
+        Printer printer = new Printer();
         for(Book b : AvaliableBooks){
-            result += b.printBook()+"\n";
+            result +=  printer.printBook(b);
         }
         return result;
     }
