@@ -16,7 +16,7 @@ public class Library {
     public String ShowBooksNames(){
         String result  = "";
         for(Book b : AvaliableBooks){
-            result += b.getName() + "\n";
+            result += b.getName() +"|"+b.getAuthor()+"|"+b.getPublicationYear()+"\n";
         }
         return result;
     }
@@ -25,7 +25,7 @@ public class Library {
 
     public  Library(){
         AvaliableBooks = new ArrayList<Book>();
-        AvaliableBooks.add(new Book("Le petite prince"));
-        AvaliableBooks.add(new Book("Das Kapital"));
+        AvaliableBooks.add(new Book("Le petite prince","Antoine de Saint-Exupéry",1943));
+        AvaliableBooks.add(new Book("Das Kapital","Karl Marx", 1867));
     }
 }
