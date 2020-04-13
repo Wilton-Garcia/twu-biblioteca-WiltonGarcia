@@ -9,13 +9,12 @@ public class Library {
         return AvaliableBooks;
     }
 
-    public String PrintBooksNames(){
+    public void PrintBooksNames(){
         String result  = "";
         Printer printer = new Printer();
         for(Book b : AvaliableBooks){
-            result +=  printer.printBook(b);
+            printer.printBook(b);
         }
-        return result;
     }
 
 
