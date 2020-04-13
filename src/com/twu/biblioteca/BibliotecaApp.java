@@ -12,7 +12,7 @@ public class BibliotecaApp {
         Menu.ChoseOption();
 
 
-        System.out.println("Today we have the follow books avaliable\n");
+
         System.out.println((library.PrintBooksNames()));
     }
 }

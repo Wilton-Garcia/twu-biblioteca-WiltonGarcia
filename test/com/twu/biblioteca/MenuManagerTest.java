@@ -20,4 +20,15 @@ public class MenuManagerTest {
         assertEquals(menu.IsAValidOption(""), false);
         assertEquals(menu.IsAValidOption("ç"), false);
     }
+
+    @Test
+    public void optionShoulBeInValidRangeTest(){
+        MenuManager menu = new MenuManager();
+        assertEquals(menu.IsAValidOption("1"),true);
+    }
+    @Test
+    public void optionShouldBeFalseWhenOptionIsOutOfRange(){
+        MenuManager menu = new MenuManager();
+        assertEquals(menu.IsAValidOption("99"),false);
+    }
 }
