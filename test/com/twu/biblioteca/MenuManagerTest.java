@@ -5,37 +5,17 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class MenuManagerTest {
-
-
     @Test
-    public void optionsIsValidWhenOptionIsAnIntegerNumber() {
+    public void optionShoulBeInValidWhenOptionsExists(){
         MenuManager menu = new MenuManager();
-        assertEquals(menu.IsAValidOption("1"), true);
-    }
-
-    @Test
-    public void optionAreNotValidWhenOptionIsSpecialCharacter(){
-        MenuManager menu = new MenuManager();
-        assertEquals(menu.IsAValidOption("/"), false);
-        assertEquals(menu.IsAValidOption("ç"), false);
-    }
-
-    @Test
-    public void optionAreNotValidWhenOptionsInEmptyOrNull(){
-        MenuManager menu = new MenuManager();
-        assertEquals(menu.IsAValidOption(null), false);
-        assertEquals(menu.IsAValidOption(" "), false);
-        assertEquals(menu.IsAValidOption(""), false);
-    }
-
-    @Test
-    public void optionShoulBeInValidRangeTest(){
-        MenuManager menu = new MenuManager();
-        assertEquals(menu.IsAValidOption("1"),true);
+        assertEquals(menu.isAValidOption("1"),true);
     }
     @Test
-    public void optionShouldBeFalseWhenOptionIsOutOfRange(){
-        MenuManager menu = new MenuManager();
-        assertEquals(menu.IsAValidOption("99"),false);
+    public void optionAreNotValidWhenOptionNotExists(){
+        MenuManager menu  = new MenuManager();
+        assertEquals(menu.isAValidOption("99"), false);
+        assertEquals(menu.isAValidOption(" "), false);
+        assertEquals(menu.isAValidOption(null), false);
     }
+
 }

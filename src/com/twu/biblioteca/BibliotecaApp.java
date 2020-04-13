@@ -10,9 +10,5 @@ public class BibliotecaApp {
         Menu.ShowWelcomeMessage();
         Menu.ShowMenuOptions();
         Menu.ChoseOption();
-
-
-
-        System.out.println((library.PrintBooksNames()));
     }
 }

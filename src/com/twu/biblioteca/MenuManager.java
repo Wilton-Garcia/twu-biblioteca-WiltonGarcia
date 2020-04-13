@@ -1,8 +1,14 @@
 package com.twu.biblioteca;
 
+import java.util.List;
 import java.util.Scanner;
 
+import static java.util.Arrays.asList;
+
 public class MenuManager {
+
+    private List<String> validOptions = asList("1");
+
 
     public void ShowWelcomeMessage(){
         System.out.println("\nWelcome to Biblioteca. Your one-stop-shop for great titles in Bangalore\n");
@@ -15,7 +21,7 @@ public class MenuManager {
         Scanner scan = new Scanner(System.in);
         String option = scan.next();
 
-        if(IsAValidOption(option)){
+        if(isAValidOption(option)){
             CallOption(option);
         }
 
@@ -31,24 +37,17 @@ public class MenuManager {
                 break;
         }
     }
-    public Boolean IsAValidOption(String option){
-       return  isIntegerNumber(option) && optionAreInTheRange(option);
-    }
-
-    private Boolean isIntegerNumber(String option) {
-        try{
-            int validOption = Integer.parseInt(option);
-            return true;
-        }catch (Exception e){
-            ShowMessageErrorInvalidOption();
+    public Boolean isAValidOption(String option){
+        if(validOptions.contains(option)){
+             return  true;
+        }else{
+            showMessageErrorInvalidOption();
             return  false;
         }
     }
-    private  Boolean optionAreInTheRange(String option){
-        return Integer.parseInt(option) == 1;
-    }
 
-    public  void ShowMessageErrorInvalidOption(){
+
+    private void showMessageErrorInvalidOption(){
         System.out.println("This are not a valid option");
     }
 
