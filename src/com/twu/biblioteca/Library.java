@@ -16,7 +16,7 @@ public class Library {
     public String ShowBooksNames(){
         String result  = "";
         for(Book b : AvaliableBooks){
-            result += b.getName() +"|"+b.getAuthor()+"|"+b.getPublicationYear()+"\n";
+            result += b.printBook()+"\n";
         }
         return result;
     }

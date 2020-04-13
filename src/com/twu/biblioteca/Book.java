@@ -28,7 +28,13 @@ public class Book {
 
     public void setPublicationYear(int publicationYear) {
         PublicationYear = publicationYear;
+
     }
+
+    public String printBook(){
+        return getName()+"|"+getAuthor()+"|"+getPublicationYear();
+    }
+
     public Book(String name,String author, int publicationYear) {
         Name = name;
         Author = author;
