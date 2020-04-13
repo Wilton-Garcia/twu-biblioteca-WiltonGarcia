@@ -9,10 +9,6 @@ public class Library {
         return AvaliableBooks;
     }
 
-    public void setAvaliableBooks(ArrayList<Book> avaliableBooks) {
-        AvaliableBooks = avaliableBooks;
-    }
-
     public String PrintBooksNames(){
         String result  = "";
         Printer printer = new Printer();

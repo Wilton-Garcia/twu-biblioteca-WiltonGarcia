@@ -10,26 +10,14 @@ public class Book {
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
-    }
-
     public String getAuthor() {
         return Author;
-    }
-
-    public void setAuthor(String author) {
-        Author = author;
     }
 
     public int getPublicationYear() {
         return PublicationYear;
     }
 
-    public void setPublicationYear(int publicationYear) {
-        PublicationYear = publicationYear;
-
-    }
 
     public Book(String name,String author, int publicationYear) {
         Name = name;
