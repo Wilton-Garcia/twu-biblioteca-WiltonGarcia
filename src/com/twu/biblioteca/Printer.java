@@ -3,9 +3,10 @@ package com.twu.biblioteca;
 public class Printer {
 
     public void printBook(Book book){
-        System.out.println(completeStringWithSpaceUntilLenghtIs25(book.getName())+"|"+
-                           completeStringWithSpaceUntilLenghtIs25(book.getAuthor())+"|"+
-                            book.getPublicationYear());
+        System.out.println(book.getId()
+                            +"|"+ completeStringWithSpaceUntilLenghtIs25(book.getName())
+                            +"|"+ completeStringWithSpaceUntilLenghtIs25(book.getAuthor())
+                            +"|"+ book.getPublicationYear());
     }
 
     public int getSizeOfString(String s){

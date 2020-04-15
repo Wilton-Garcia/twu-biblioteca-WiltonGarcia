@@ -32,6 +32,7 @@ public class MenuManager {
 
     public  void callOption(String option){
        Library library = new Library();
+       library.createBooksForLibrary();
 
         switch (option){
             case "0":
