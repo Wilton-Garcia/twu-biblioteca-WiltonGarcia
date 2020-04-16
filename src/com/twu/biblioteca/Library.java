@@ -43,6 +43,8 @@ public class Library {
         return (id <= bookList.size());
     }
 
-    public  Library(){
+    public  Library(boolean generateLibraryWithBooks){
+        if(generateLibraryWithBooks)
+            createBooksForLibrary();
     }
 }

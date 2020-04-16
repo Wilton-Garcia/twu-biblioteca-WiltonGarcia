@@ -18,4 +18,6 @@ public class MenuManagerTest {
         assertEquals(menu.isAValidOption(" "), false);
         assertEquals(menu.isAValidOption(null), false);
     }
+
+
 }
