@@ -16,18 +16,21 @@ public class MenuManager {
     }
 
     public void showMenuOptions(){
+        System.out.println("(0) Exit Application");
         System.out.println("(1) List of Books");
-        System.out.println(("(0) Exit Application"));
+        System.out.println("(2) To Checkout a book");
         choseOption();
     }
 
-    public void choseOption(){
+    private void choseOption(){
         Scanner scan = new Scanner(System.in);
         String option = scan.next();
         if(isAValidOption(option))
             callOption(option);
-        else
+        else {
+            showMessageErrorInvalidOption();
             showMenuOptions();
+        }
     }
 
     public  void callOption(String option){
@@ -38,9 +41,14 @@ public class MenuManager {
             case "0":
                 exit(0);
             case "1" :
-                System.out.println("Today we have the follow books avaliable\n");
+                System.out.println("Today we have the follow books available\n");
                 library.printBooksNames();
                 break;
+            case "2":
+                System.out.println("What is the book id?");
+
+                break;
+
         }
         showMenuOptions();
     }

@@ -24,9 +24,8 @@ public class Book {
         return publicationYear;
     }
 
-    public boolean isCheckout() {
-        return checkout;
-    }
+    public boolean isCheckout() { return checkout; }
+
     public void setCheckout(boolean checkout) {
         this.checkout = checkout;
     }

@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Library {
 
@@ -42,7 +43,12 @@ public class Library {
     }
 
     public void checkOutABook(int id){
-        bookList.get(id).setCheckout(true);
+        if(bookExist(id))
+            bookList.get(id).setCheckout(true);
+    }
+
+    public boolean bookExist(int id){
+        return (id <= bookList.size());
     }
 
     public  Library(){
