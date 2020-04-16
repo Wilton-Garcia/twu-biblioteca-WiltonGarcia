@@ -5,27 +5,19 @@ import java.util.Scanner;
 public class Library {
 
     private ArrayList<Book> bookList = new ArrayList<Book>();
-    private ArrayList<Book> availableBooks = new ArrayList<Book>();
+
 
     public ArrayList<Book> getBookList() { return bookList; }
 
 
     public void printBooksNames(){
         Printer printer = new Printer();
-        availableBooks = getAvailableBooks();
-        for(Book b : availableBooks){
-            printer.printBook(b);
+        for(Book b : bookList){
+            if(!b.isCheckout())
+                printer.printBook(b);
         }
     }
 
-    public ArrayList<Book> getAvailableBooks(){
-        for (Book b: bookList) {
-          if(!b.isCheckout()){
-              availableBooks.add(b);
-          }
-        }
-        return availableBooks;
-    }
 
     public void createBooksForLibrary(){
         addBookInLibrary(new Book("Le petite prince","Antoine de Saint-Exupéry",1943));
