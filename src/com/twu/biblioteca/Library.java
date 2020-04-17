@@ -1,4 +1,5 @@
 package com.twu.biblioteca;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,11 +9,10 @@ import static java.util.Arrays.asList;
 public class Library {
 
     private ArrayList<Book> bookList = new ArrayList<Book>();
-    private List<String> validOptions = asList("1");
+    //private List<String> validOptions = asList("1");
     private Printer printer = new Printer();
 
     public ArrayList<Book> getBookList() { return bookList; }
-
 
     public void printBooksNames(){
         for(Book b : bookList){
@@ -20,7 +20,6 @@ public class Library {
                 printer.printBook(b);
         }
     }
-
 
     public void createBooksForLibrary(){
         addBookInLibrary(new Book("Le petite prince","Antoine de Saint-Exupéry",1943));
@@ -33,7 +32,7 @@ public class Library {
     }
 
     private Book createIdForBook(Book book) {
-       book.setId(bookList.size());
+        book.setId(bookList.size());
         return book;
     }
 
@@ -51,8 +50,14 @@ public class Library {
     }
 
     public void checkOutABook(int id){
+        if(!bookList.get(id).isCheckout())
+        {
             bookList.get(id).setCheckout(true);
             printer.printMessage(Message.SUCCESS_ON_CHECKOUT);
+
+        }else{
+            printer.printMessage(Message.BOOK_NOT_AVAILABLE);
+        }
     }
 
     public boolean bookExist(int id){
@@ -60,8 +65,8 @@ public class Library {
             return true;
         else{
             printer.printMessage(Message.BOOK_NOT_AVAILABLE);
+            return false;
         }
-
     }
 
     public  Library(boolean generateLibraryWithBooks){

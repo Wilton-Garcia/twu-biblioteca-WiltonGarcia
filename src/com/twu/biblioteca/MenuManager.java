@@ -37,8 +37,7 @@ public class MenuManager {
     }
 
     public  void callOption(String option){
-
-
+        
         switch (option){
             case "0":
                 exit(0);
