@@ -30,7 +30,6 @@ public class Library {
 
     public void addBookInLibrary(Book book){
         bookList.add(createIdForBook(book));
-        printer.printMessage(Message.SUCCESS_ON_CHECKOUT);
     }
 
     private Book createIdForBook(Book book) {
@@ -41,27 +40,28 @@ public class Library {
 
     public void tryCheckoutABook(){
         Scanner scanner = new Scanner(System.in);
+        int id = 0;
         try{
-            int id = scanner.nextInt();
-            if(bookExist(id))
-                checkOutABook(id);
-            else {
-                printer.printMessage(Message.BOOK_NOT_AVAILABLE);
-            }
+            id = scanner.nextInt();
         }catch(Exception e){
             printer.printMessage(Message.INVALID_OPTION);
         }
-
-
-
+        if(bookExist(id))
+            checkOutABook(id);
     }
 
     public void checkOutABook(int id){
             bookList.get(id).setCheckout(true);
+            printer.printMessage(Message.SUCCESS_ON_CHECKOUT);
     }
 
     public boolean bookExist(int id){
-        return (id <= bookList.size());
+        if(id <= bookList.size())
+            return true;
+        else{
+            printer.printMessage(Message.BOOK_NOT_AVAILABLE);
+        }
+
     }
 
     public  Library(boolean generateLibraryWithBooks){
