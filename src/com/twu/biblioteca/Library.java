@@ -1,17 +1,20 @@
 package com.twu.biblioteca;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import static java.util.Arrays.asList;
 
 public class Library {
 
     private ArrayList<Book> bookList = new ArrayList<Book>();
-
+    private List<String> validOptions = asList("1");
+    private Printer printer = new Printer();
 
     public ArrayList<Book> getBookList() { return bookList; }
 
 
     public void printBooksNames(){
-        Printer printer = new Printer();
         for(Book b : bookList){
             if(!b.isCheckout())
                 printer.printBook(b);
@@ -27,6 +30,7 @@ public class Library {
 
     public void addBookInLibrary(Book book){
         bookList.add(createIdForBook(book));
+        printer.printMessage(Message.SUCCESS_ON_CHECKOUT);
     }
 
     private Book createIdForBook(Book book) {
@@ -34,8 +38,25 @@ public class Library {
         return book;
     }
 
+
+    public void tryCheckoutABook(){
+        Scanner scanner = new Scanner(System.in);
+        try{
+            int id = scanner.nextInt();
+            if(bookExist(id))
+                checkOutABook(id);
+            else {
+                printer.printMessage(Message.BOOK_NOT_AVAILABLE);
+            }
+        }catch(Exception e){
+            printer.printMessage(Message.INVALID_OPTION);
+        }
+
+
+
+    }
+
     public void checkOutABook(int id){
-        if(bookExist(id))
             bookList.get(id).setCheckout(true);
     }
 

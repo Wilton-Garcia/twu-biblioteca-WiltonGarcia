@@ -11,17 +11,17 @@ public class MenuManager {
     private List<String> validOptions = asList("0","1","2");
 
     Library library = new Library(true);
+    Printer printer = new Printer();
 
     public void showWelcomeMessage(){
-        System.out.println("\nWelcome to Biblioteca. Your one-stop-shop for great titles in Bangalore\n");
-
+        printer.printMessage(Message.WELCOME_TO_BIBLIOTECA);
     }
 
     public void showMenuOptions(){
-        System.out.println("\nPlease type one of options bellow\n");
-        System.out.println("(0) Exit Application");
-        System.out.println("(1) List of Books");
-        System.out.println("(2) To Checkout a book");
+        printer.printMessage(Message.ASK_FOR_MENU_OPTION);
+        printer.printMessage(Message.MAIN_MENU_OPTION_EXIT_APPLICATION);
+        printer.printMessage(Message.MAIN_MENU_OPTION_LIST_BOOKS);
+        printer.printMessage(Message.MAIN_MENU_OPTION_CHECKOUTBOOKS);
         choseOption();
     }
 
@@ -43,14 +43,12 @@ public class MenuManager {
             case "0":
                 exit(0);
             case "1" :
-                System.out.println("Today we have the follow books available\n");
+                printer.printMessage(Message.AVAILABLE_BOOKS_PRESENTATION);
                 library.printBooksNames();
                 break;
             case "2":
-                System.out.println("What is the book id?");
-                Scanner scan = new Scanner(System.in);
-                int op = Integer.parseInt(scan.next());
-                library.checkOutABook(op);
+                printer.printMessage(Message.ASK_FOR_BOOK_ID);
+                library.tryCheckoutABook();
                 break;
 
         }
@@ -67,6 +65,6 @@ public class MenuManager {
     }
 
     private void showMessageErrorInvalidOption(){
-        System.out.println("This are not a valid option");
+        printer.printMessage(Message.INVALID_OPTION);
     }
 }
