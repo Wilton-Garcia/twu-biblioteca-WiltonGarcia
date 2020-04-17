@@ -36,8 +36,19 @@ public class Library {
         return book;
     }
 
-
     public void tryCheckoutABook(){
+        int id = readUserOption();
+        if(bookExist(id))
+            checkOutABook(id);
+    }
+
+    public void tryReturnABook(){
+        int id = readUserOption();
+        if(bookExist(id))
+            returnBook(id);
+    }
+
+    private int readUserOption() {
         Scanner scanner = new Scanner(System.in);
         int id = 0;
         try{
@@ -45,8 +56,7 @@ public class Library {
         }catch(Exception e){
             printer.printMessage(Message.INVALID_OPTION);
         }
-        if(bookExist(id))
-            checkOutABook(id);
+        return id;
     }
 
     public void checkOutABook(int id){
@@ -72,5 +82,14 @@ public class Library {
     public  Library(boolean generateLibraryWithBooks){
         if(generateLibraryWithBooks)
             createBooksForLibrary();
+    }
+
+    public void returnBook(int id) {
+        if(!bookList.get(id).isCheckout()) {
+           printer.printMessage(Message.BOOK_NOT_VALID_TO_RETURN);
+           return;
+        }
+        bookList.get(id).setCheckout(false);
+        printer.printMessage(Message.BOOK_WAS_RETURNED_WITH_SUCCESS);
     }
 }

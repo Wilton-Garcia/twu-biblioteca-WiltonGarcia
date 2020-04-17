@@ -5,8 +5,7 @@ import org.junit.Test;
 import java.sql.Array;
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class LibraryTest {
 
@@ -29,11 +28,18 @@ public class LibraryTest {
     }
 
     @Test
-    public void WhenCheckoutABookTheyShouldBeCheckoutTru(){
+    public void WhenCheckoutABookTheyShouldBeCheckoutTrue(){
         Library library = new Library(false);
         library.addBookInLibrary(new Book("Das Kapital","Karl Marx", 1853));
         library.checkOutABook(0);
         assertEquals(library.getBookList().get(0).isCheckout(),true);
 
+    }
+    @Test
+    public void WhenReturnABookCheckoutShouldBeFalse(){
+        Library library = new Library(true);
+        library.checkOutABook(0);
+        library.returnBook(0);
+        assertFalse(library.getBookList().get(0).isCheckout());
     }
 }
