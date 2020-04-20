@@ -44,7 +44,7 @@ public class MenuManager {
                 exit(0);
             case "1" :
                 printer.printMessage(Message.AVAILABLE_BOOKS_PRESENTATION);
-                library.printBooksNames();
+               // library.printBooksNames();
                 break;
             case "2":
                 printer.printMessage(Message.ASK_FOR_BOOK_ID);

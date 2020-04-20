@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.sql.Array;
 import java.util.ArrayList;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
@@ -35,6 +36,8 @@ public class LibraryTest {
         assertEquals(library.getBookList().get(0).isCheckout(),true);
 
     }
+
+
     @Test
     public void WhenReturnABookCheckoutShouldBeFalse(){
         Library library = new Library(true);
@@ -44,6 +47,39 @@ public class LibraryTest {
     }
 */
     //New Refactoring Test
+    @Test
+    public void shouldReturnTrueWhenBookExist(){
+        Library library = new Library(true);
+        assertTrue(library.bookExist(0));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenBookNotExist(){
+        Library library = new Library(false);
+        assertFalse(library.bookExist(0));
+    }
+
+    @Test
+    public void printOnlyAvailableBooks(){
+        Library library = new Library(false);
+        Book bookToCheckout = new Book("A Fundação","Isac Asimov",1952);
+        Book bookToShow = new Book("Harry Potter","J.K. Rowlling", 1995);
+        library.addBookInLibrary(bookToCheckout);
+        library.addBookInLibrary(bookToShow);
+        library.tryCheckoutABook(0);
+        assertEquals(library.printAvailableBooks(),new Printer().formatBooKInfoToPrinter(bookToShow));
+    }
+
+    @Test
+    public void printMessageNoAvailableBooks(){
+        Library library = new Library(false);
+        Book bookToCheckout = new Book("A Fundação","Isac Asimov",1952);
+        library.addBookInLibrary(bookToCheckout);
+        library.tryCheckoutABook(0);
+        assertThat(library.printAvailableBooks(), is(Message.THERE_ARE_NO_AVAILABLE_BOOKS));
+
+    }
+
     @Test
     public void TryCheckoutABookShouldReturnInvalidBookMessage(){
         Library library = new Library(true);

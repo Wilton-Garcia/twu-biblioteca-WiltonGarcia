@@ -9,6 +9,7 @@ public class Message {
     public static final String ASK_FOR_BOOK_ID = "\nWhat is the book id?\n";
     public static final String SUCCESS_ON_CHECKOUT = "\nThank you! Enjoy the book \n";
     public static final String BOOK_NOT_AVAILABLE = "\nSorry, that book it not available\n";
+    public static final String THERE_ARE_NO_AVAILABLE_BOOKS = "Sorry, there are no available books";
 
     public static final String BOOK_WAS_RETURNED_WITH_SUCCESS = "Thank you for returning the book";
     public static final String BOOK_NOT_VALID_TO_RETURN = "This is a not valid book to return";

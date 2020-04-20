@@ -2,11 +2,11 @@ package com.twu.biblioteca;
 
 public class Printer {
 
-    public void printBook(Book book){
-        System.out.println(book.getId()
+    public String formatBooKInfoToPrinter(Book book){
+        return book.getId()
                             +"|"+ completeStringWithSpaceUntilLenghtIs25(book.getName())
                             +"|"+ completeStringWithSpaceUntilLenghtIs25(book.getAuthor())
-                            +"|"+ book.getPublicationYear());
+                            +"|"+ book.getPublicationYear();
     }
 
     public int getSizeOfString(String s){
