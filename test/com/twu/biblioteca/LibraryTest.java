@@ -8,45 +8,19 @@ import java.util.ArrayList;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
+
 public class LibraryTest {
-/*
+
     @Test
-    public void createBooksForLibraryShouldFillBookList(){
-        Library library = new Library(true);
-        library.createBooksForLibrary();
-        assertEquals(library.getBookList().isEmpty(),false);
-    }
-    @Test
-    public void newLibraryShouldReturnAnEmptyBookList(){
+    public void whenAddABookTheListSizeShouldIncrease(){
         Library library = new Library(false);
-        assertEquals(library.getBookList().isEmpty(),true);
-    }
-    @Test
-    public void aNewBookInLibraryShouldBeCheckoutFalse(){
-        Library library = new Library(false);
-        library.addBookInLibrary(new Book("Das Kapital","Karl Marx", 1853));
-        assertEquals(library.getBookList().get(0).isCheckout(),false);
-    }
-
-    @Test
-    public void WhenCheckoutABookTheyShouldBeCheckoutTrue(){
-        Library library = new Library(false);
-        library.addBookInLibrary(new Book("Das Kapital","Karl Marx", 1853));
-        library.checkOutABook(0);
-        assertEquals(library.getBookList().get(0).isCheckout(),true);
-
+        int initialSize = library.getBookList().size();
+        library.addBookInLibrary(new Book("Harry Potter","J.K. Rowlling", 1995));
+        int currentSize = library.getBookList().size();
+        assertTrue(currentSize > initialSize);
     }
 
 
-    @Test
-    public void WhenReturnABookCheckoutShouldBeFalse(){
-        Library library = new Library(true);
-        library.checkOutABook(0);
-        library.returnBook(0);
-        assertFalse(library.getBookList().get(0).isCheckout());
-    }
-*/
-    //New Refactoring Test
     @Test
     public void shouldReturnTrueWhenBookExist(){
         Library library = new Library(true);

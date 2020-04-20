@@ -1,10 +1,6 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-import static java.util.Arrays.asList;
 
 public class Library {
 
@@ -36,7 +32,7 @@ public class Library {
            return Message.BOOK_NOT_AVAILABLE;
     }
 
-    public String checkOutABook(int id){
+    private String checkOutABook(int id){
         if(!bookList.get(id).isCheckout()) {
             bookList.get(id).setCheckout(true);
             return  Message.SUCCESS_ON_CHECKOUT;
