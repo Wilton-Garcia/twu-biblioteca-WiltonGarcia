@@ -20,7 +20,6 @@ public class LibraryTest {
         assertTrue(currentSize > initialSize);
     }
 
-
     @Test
     public void shouldReturnTrueWhenBookExist(){
         Library library = new Library(true);
@@ -51,7 +50,6 @@ public class LibraryTest {
         library.addBookInLibrary(bookToCheckout);
         library.tryCheckoutABook(0);
         assertThat(library.printAvailableBooks(), is(Message.THERE_ARE_NO_AVAILABLE_BOOKS));
-
     }
 
     @Test

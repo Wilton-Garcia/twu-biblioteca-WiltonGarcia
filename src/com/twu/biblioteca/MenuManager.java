@@ -21,7 +21,7 @@ public class MenuManager {
         printer.printMessage(Message.ASK_FOR_MENU_OPTION);
         printer.printMessage(Message.MAIN_MENU_OPTION_EXIT_APPLICATION);
         printer.printMessage(Message.MAIN_MENU_OPTION_LIST_BOOKS);
-        printer.printMessage(Message.MAIN_MENU_OPTION_CHECKOUTBOOK);
+        printer.printMessage(Message.MAIN_MENU_OPTION_CHECKOUT_BOOK);
         printer.printMessage(Message.MAIN_MENU_OPTION_RETURN_BOOK);
         choseOption();
     }
@@ -44,7 +44,7 @@ public class MenuManager {
                 exit(0);
             case "1" :
                 printer.printMessage(Message.AVAILABLE_BOOKS_PRESENTATION);
-               // library.printBooksNames();
+                printer.printMessage(library.printAvailableBooks());
                 break;
             case "2":
                 printer.printMessage(Message.ASK_FOR_BOOK_ID);

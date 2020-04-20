@@ -6,7 +6,8 @@ public class Printer {
         return book.getId()
                             +"|"+ completeStringWithSpaceUntilLenghtIs25(book.getName())
                             +"|"+ completeStringWithSpaceUntilLenghtIs25(book.getAuthor())
-                            +"|"+ book.getPublicationYear();
+                            +"|"+ book.getPublicationYear()
+                            +"\n";
     }
 
     public int getSizeOfString(String s){
