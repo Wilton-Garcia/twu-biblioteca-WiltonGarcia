@@ -36,47 +36,35 @@ public class Library {
         return book;
     }
 
-    public void tryCheckoutABook(){
-        int id = readUserOption();
+    public String tryCheckoutABook(int id){
         if(bookExist(id))
-            checkOutABook(id);
+           return checkOutABook(id);
+        else
+           return Message.BOOK_NOT_AVAILABLE;
     }
 
-    public void tryReturnABook(){
-        int id = readUserOption();
+    public String tryReturnABook(int id){
         if(bookExist(id))
-            returnBook(id);
+            return  returnBook(id);
+        else
+            return Message.BOOK_NOT_AVAILABLE;
     }
 
-    private int readUserOption() {
-        Scanner scanner = new Scanner(System.in);
-        int id = 0;
-        try{
-            id = scanner.nextInt();
-        }catch(Exception e){
-            printer.printMessage(Message.INVALID_OPTION);
-        }
-        return id;
-    }
 
-    public void checkOutABook(int id){
-        if(!bookList.get(id).isCheckout())
-        {
+    public String checkOutABook(int id){
+        if(!bookList.get(id).isCheckout()) {
             bookList.get(id).setCheckout(true);
-            printer.printMessage(Message.SUCCESS_ON_CHECKOUT);
-
-        }else{
-            printer.printMessage(Message.BOOK_NOT_AVAILABLE);
+            return  Message.SUCCESS_ON_CHECKOUT;
         }
+        else
+            return Message.BOOK_NOT_AVAILABLE;
     }
 
     public boolean bookExist(int id){
         if(id <= bookList.size())
             return true;
-        else{
-            printer.printMessage(Message.BOOK_NOT_AVAILABLE);
+        else
             return false;
-        }
     }
 
     public  Library(boolean generateLibraryWithBooks){
@@ -84,12 +72,11 @@ public class Library {
             createBooksForLibrary();
     }
 
-    public void returnBook(int id) {
+    private String returnBook(int id) {
         if(!bookList.get(id).isCheckout()) {
-           printer.printMessage(Message.BOOK_NOT_VALID_TO_RETURN);
-           return;
+          return Message.BOOK_NOT_VALID_TO_RETURN;
         }
         bookList.get(id).setCheckout(false);
-        printer.printMessage(Message.BOOK_WAS_RETURNED_WITH_SUCCESS);
+        return Message.BOOK_WAS_RETURNED_WITH_SUCCESS;
     }
 }

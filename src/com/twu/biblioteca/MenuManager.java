@@ -48,11 +48,11 @@ public class MenuManager {
                 break;
             case "2":
                 printer.printMessage(Message.ASK_FOR_BOOK_ID);
-                library.tryCheckoutABook();
+                library.tryCheckoutABook(readUserOption());
                 break;
             case "3":
                 printer.printMessage(Message.ASK_FOR_BOOK_ID);
-                library.tryReturnABook();
+                library.tryReturnABook(readUserOption());
                 break;
 
         }
@@ -70,5 +70,16 @@ public class MenuManager {
 
     private void showMessageErrorInvalidOption(){
         printer.printMessage(Message.INVALID_OPTION);
+    }
+
+    private int readUserOption() {
+        Scanner scanner = new Scanner(System.in);
+        int id = 0;
+        try{
+            id = scanner.nextInt();
+        }catch(Exception e){
+            printer.printMessage(Message.INVALID_OPTION);
+        }
+        return id;
     }
 }

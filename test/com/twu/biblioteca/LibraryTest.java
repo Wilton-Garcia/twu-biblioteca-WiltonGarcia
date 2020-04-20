@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
-
+/*
     @Test
     public void createBooksForLibraryShouldFillBookList(){
         Library library = new Library(true);
@@ -41,5 +41,31 @@ public class LibraryTest {
         library.checkOutABook(0);
         library.returnBook(0);
         assertFalse(library.getBookList().get(0).isCheckout());
+    }
+*/
+    //New Refactoring Test
+    @Test
+    public void TryCheckoutABookShouldReturnInvalidBookMessage(){
+        Library library = new Library(true);
+        assertEquals(library.tryCheckoutABook(17),Message.BOOK_NOT_AVAILABLE);
+    }
+
+    @Test
+    public void TryCheckoutABookShouldReturnSucessfullyMessage(){
+        Library library = new Library(true);
+        assertEquals(library.tryCheckoutABook(0),Message.SUCCESS_ON_CHECKOUT);
+    }
+
+    @Test
+    public void TryReturnABookShouldReturnInvalidBookMessage(){
+        Library library = new Library(true);
+        assertEquals(library.tryReturnABook(0),Message.BOOK_NOT_VALID_TO_RETURN);
+    }
+    @Test
+    public void TryReturnABookShouldReturnSuccessfullyBookMessage(){
+        Library library = new Library(true);
+        library.tryCheckoutABook(0);
+        assertEquals(library.tryReturnABook(0),Message.BOOK_WAS_RETURNED_WITH_SUCCESS);
+
     }
 }
