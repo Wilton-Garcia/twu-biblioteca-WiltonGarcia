@@ -1,11 +1,12 @@
 package com.twu.biblioteca;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.ArrayList;
 
 public class Library {
 
-    private ArrayList<Book> bookList = new ArrayList<Book>();
-
+    private ArrayList<Book> bookList = new ArrayList<>();
+    private  ArrayList<Movie> movieList = new ArrayList<>();
 
     private Printer printer = new Printer();
 
@@ -25,6 +26,23 @@ public class Library {
             return availabeBooks;
         }
     }
+
+    public String printAvailableMovies(){
+        String availableMovies = "";
+
+        for(Movie m : movieList){
+            if(!m.isCheckout())
+                availableMovies +=  printer.formatMovieInfoToPrinter(m);
+        }
+
+        if(availableMovies.isEmpty()){
+            return Message.THERE_ARE_NO_AVAILABLE_BOOKS;
+        }else{
+            return availableMovies;
+        }
+    }
+
+
 
     public String tryCheckoutABook(int id){
         if(bookExist(id))
@@ -68,19 +86,31 @@ public class Library {
     public void addBookInLibrary(Book book){
         bookList.add(createIdForBook(book));
     }
+    public void addMovieInLibrary(Movie movie){
+        movieList.add(createIdForMovie(movie));
+    }
 
-    private void createBooksForLibrary(){
+
+    private void createBooksAndMoviesForLibrary(){
         addBookInLibrary(new Book("Le petite prince","Antoine de Saint-Exupéry",1943));
         addBookInLibrary(new Book("Das Kapital","Karl Marx", 1867));
         addBookInLibrary(new Book("Lolita","Vladimir Nabokov", 1955));
+
+        addMovieInLibrary(new Movie("As vantagens de ser invisível","Stephen Schbosky", 2012, 9));
+        addMovieInLibrary(new Movie("Laland","Damien Chazelle",2017,10));
     }
     private Book createIdForBook(Book book) {
         book.setId(bookList.size());
         return book;
     }
+
+    private Movie createIdForMovie(Movie movie) {
+        movie.setId(movieList.size());
+        return movie;
+    }
     public  Library(boolean generateLibraryWithBooks){
         if(generateLibraryWithBooks)
-            createBooksForLibrary();
+            createBooksAndMoviesForLibrary();
     }
 
     //Remodeling the code

@@ -8,7 +8,7 @@ public class Movie {
     private String name;
     private String director;
     private int year;
-    private short rating;
+    private int rating;
 
     public int getId() {
         return id;
@@ -30,7 +30,7 @@ public class Movie {
         return year;
     }
 
-    public short getRating() {
+    public int getRating() {
         return rating;
     }
 
@@ -42,7 +42,7 @@ public class Movie {
         this.checkout = checkout;
     }
 
-    public Movie(String name, String director, int year, short rating) {
+    public Movie(String name, String director, int year, int rating) {
 
         checkout = false;
 

@@ -8,7 +8,7 @@ import static java.util.Arrays.asList;
 
 public class MenuManager {
 
-    private List<String> validOptions = asList("0","1","2","3");
+    private List<String> validOptions = asList("0","1","2","3","4");
 
     Library library = new Library(true);
     Printer printer = new Printer();
@@ -23,6 +23,7 @@ public class MenuManager {
         printer.printMessage(Message.MAIN_MENU_OPTION_LIST_BOOKS);
         printer.printMessage(Message.MAIN_MENU_OPTION_CHECKOUT_BOOK);
         printer.printMessage(Message.MAIN_MENU_OPTION_RETURN_BOOK);
+        printer.printMessage(Message.MAIN_MENU_OPTION_LIST_MOVIES);
         choseOption();
     }
 
@@ -53,6 +54,10 @@ public class MenuManager {
             case "3":
                 printer.printMessage(Message.ASK_FOR_BOOK_ID);
                 library.tryReturnABook(readUserOption());
+                break;
+            case "4":
+                printer.printMessage(Message.AVAILABLE_MOVIES_PRESENTATION);
+                printer.printMessage(library.printAvailableMovies());
                 break;
 
         }
