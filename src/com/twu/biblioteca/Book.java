@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class Book {
+public class Book implements IMedia{
 
     private int id;
     private String name;
@@ -12,6 +12,7 @@ public class Book {
 
     public void setId(int id) { this.id = id;}
 
+    @Override
     public String getName() {
         return name;
     }
@@ -24,7 +25,20 @@ public class Book {
         return publicationYear;
     }
 
+    @Override
     public boolean isCheckout() { return checkout; }
+
+    @Override
+    public String toString(){
+
+        Printer printer = new Printer();
+
+        return getId()
+                +"|"+ printer.completeStringWithSpaceUntilLenghtIs50(getName())
+                +"|"+ printer.completeStringWithSpaceUntilLenghtIs50(getAuthor())
+                +"|"+ getPublicationYear()
+                +"\n";
+    }
 
     public void setCheckout(boolean checkout) {
         this.checkout = checkout;

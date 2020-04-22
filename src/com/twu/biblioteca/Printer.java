@@ -18,6 +18,10 @@ public class Printer {
                 +"|"+ movie.getRating()
                 +"\n";
     }
+
+    public String formatMediaInfoToPrinter(IMedia media){
+        return media.getName();
+    }
     public int getSizeOfString(String s){
         return  s.length();
     }

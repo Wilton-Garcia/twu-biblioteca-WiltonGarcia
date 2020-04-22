@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class Movie {
+public class Movie implements IMedia {
 
     private int id;
     private boolean checkout;
@@ -14,10 +14,12 @@ public class Movie {
         return id;
     }
 
+    @Override
     public boolean isCheckout() {
         return checkout;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -40,6 +42,17 @@ public class Movie {
 
     public void setCheckout(boolean checkout) {
         this.checkout = checkout;
+    }
+
+    @Override
+    public String toString() {
+        Printer printer = new Printer();
+        return getId()
+                + "|" + printer.completeStringWithSpaceUntilLenghtIs50(getName())
+                + "|" + printer.completeStringWithSpaceUntilLenghtIs50(getDirector())
+                + "|" + getYear()
+                + "|" + getRating()
+                + "\n";
     }
 
     public Movie(String name, String director, int year, int rating) {
