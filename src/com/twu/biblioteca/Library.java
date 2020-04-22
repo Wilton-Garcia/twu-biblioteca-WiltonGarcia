@@ -82,5 +82,15 @@ public class Library {
             createBooksForLibrary();
     }
 
+    //Remodeling the code
+
+    private ArrayList<LibraryItem> items = new ArrayList<>();
+    private ArrayList<Movie> movie = new ArrayList<>();
+
+    public void addItemInLibrary(LibraryItem item){
+
+
+
+    }
 
 }

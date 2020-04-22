@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class LibraryItem {
+public abstract class LibraryItem {
 
     private int id;
     private boolean checkout;
@@ -9,6 +9,8 @@ public class LibraryItem {
     private int year;
 
     public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public boolean isCheckout() { return checkout; }
 
